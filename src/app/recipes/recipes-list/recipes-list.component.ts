@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {Recipe} from "../recipe.model";
 
 @Component({
@@ -9,9 +9,9 @@ import {Recipe} from "../recipe.model";
 export class RecipesListComponent implements OnInit {
   recipes : Recipe[] = [
     new Recipe("Dal bati","testy recipe","https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/pxsvyfpssbzmjfkjpck9"),
-    new Recipe("Dal bati","testy recipe","https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/pxsvyfpssbzmjfkjpck9")
+    new Recipe("Dal bati another","testy recipe","https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/pxsvyfpssbzmjfkjpck9")
   ];
-
+  @Output() recipeTobind = new EventEmitter<any>();
   constructor() {
 
   }
@@ -20,4 +20,7 @@ export class RecipesListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  recipeDetail(rec: any) {
+    this.recipeTobind.emit(rec);
+  }
 }
