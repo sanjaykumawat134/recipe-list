@@ -7,13 +7,13 @@ import {Recipe} from "../../recipe.model";
   styleUrls: ['./recipe-item.component.css']
 })
 export class RecipeItemComponent implements OnInit {
-  @Input() recipe:Recipe = new Recipe('','','');
-  @Output() recipeDetailToShow = new EventEmitter<any>();
+  @Input() recipe:Recipe;
+  @Output() recipeDetailToShow = new EventEmitter<Recipe>();
   constructor() { }
 
   ngOnInit(): void {
   }
- showDetails(rec:any){
+ showDetails(rec:Recipe){
     this.recipeDetailToShow.emit(rec);
  }
 

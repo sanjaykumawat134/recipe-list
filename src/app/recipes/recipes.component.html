@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5">
-      <app-recipes-list (recipeTobind)="showRecipeDetails($event)"></app-recipes-list>
+      <app-recipes-list></app-recipes-list>
     </div>
     <div class="col-md-7">
-      <app-recipe-details *ngIf ="recipeItem else itemInfo" [recipe] ="recipeItem"></app-recipe-details>
+      <app-recipe-details *ngIf="recipeItem else itemInfo" [recipe]="recipeItem"></app-recipe-details>
       <ng-template #itemInfo>
         <p>Please Select the recipe</p>
       </ng-template>
