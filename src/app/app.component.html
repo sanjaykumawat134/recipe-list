@@ -1,10 +1,12 @@
-
-<app-header (featureSelected) = "displayRecipe($event)"> </app-header>    <!--we have to determine if link click in header is recipe then display recipe otherwise display shopping list-->
+<!-- <app-header (featureSelected)="displayRecipe($event)"> </app-header> -->
+<app-header> </app-header>
+<!--we have to determine if link click in header is recipe then display recipe otherwise display shopping list-->
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-   <app-recipes *ngIf ='isrecipe=="recipes"'></app-recipes>
-      <app-shopping-list *ngIf ='isrecipe =="shopping-list"' ></app-shopping-list>
+      <!-- <app-recipes *ngIf ='isrecipe=="recipes"'></app-recipes>
+      <app-shopping-list *ngIf ='isrecipe =="shopping-list"' ></app-shopping-list> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

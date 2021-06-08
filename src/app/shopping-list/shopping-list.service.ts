@@ -19,6 +19,7 @@ export class ShopingListService{
   }
 
   addExistingIngredients(ingredients:Ingredients[]){
+    console.log(...ingredients)
     this.Ingredients.push(...ingredients);
     this.ingredientWasAdded.emit(this.Ingredients.slice());
   }

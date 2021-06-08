@@ -4,10 +4,8 @@
       <app-recipes-list></app-recipes-list>
     </div>
     <div class="col-md-7">
-      <app-recipe-details *ngIf="recipeItem else itemInfo" [recipe]="recipeItem"></app-recipe-details>
-      <ng-template #itemInfo>
-        <p>Please Select the recipe</p>
-      </ng-template>
+      <!-- <app-recipe-details *ngIf="recipeItem else itemInfo" [recipe]="recipeItem"></app-recipe-details> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

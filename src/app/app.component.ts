@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'recipe-list';
-  isrecipe:string= 'recipes'
-  displayRecipe(elem:any){
-    this.isrecipe = elem;
-  }
+  // isrecipe:string= 'recipes'
+  // displayRecipe(elem:any){
+  //   this.isrecipe = elem;
+  // }
 }
