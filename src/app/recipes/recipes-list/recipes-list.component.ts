@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Recipe} from "../recipe.model";
 import {RecipesService} from "../recipes.service"
@@ -10,7 +10,7 @@ import {RecipesService} from "../recipes.service"
 })
 export class RecipesListComponent implements OnInit {
   recipes : Recipe[] = [];
-  // @Output() recipeTobind = new EventEmitter<Recipe>();
+  @Output() recipeTobind = new EventEmitter<Recipe>();
   constructor(private recipeService: RecipesService,private route : ActivatedRoute,private router:Router) {}
 
 
