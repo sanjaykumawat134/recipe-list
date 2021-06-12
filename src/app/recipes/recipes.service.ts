@@ -2,9 +2,11 @@ import {Recipe} from "./recipe.model"
 import {EventEmitter, Injectable} from "@angular/core"
 import { Ingredients } from "../shared/ingredients.model";
 import { ShopingListService } from "../shopping-list/shopping-list.service";
+import { Subject } from "rxjs";
 @Injectable()
 export class RecipesService{
   recipeSelected = new EventEmitter<Recipe>();
+  recipeChanged = new Subject<Recipe[]>();
  private recipes:Recipe[]=[
      new Recipe("Dal bati","testy recipe","https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/pxsvyfpssbzmjfkjpck9",[
        new Ingredients("dal",20),
@@ -25,5 +27,20 @@ export class RecipesService{
 
   addIngredientsToShoppingList(ingredients:Ingredients[]){
       this.shopingListService.addExistingIngredients(ingredients);
+  }
+  
+  addRecipe(newrecipe:Recipe){
+    console.log(newrecipe)
+    this.recipes.push(newrecipe);
+    // console.log(this.recipes)
+    this.recipeChanged.next(this.recipes.slice())
+  }
+  updateRecipe(index:number , recipe:Recipe){
+   this.recipes[index]=recipe;
+   this.recipeChanged.next(this.recipes.slice())
+  }
+  deleteRecipe(index :number){
+    this.recipes.splice(index,1);
+    this.recipeChanged.next(this.recipes.slice());
   }
 }

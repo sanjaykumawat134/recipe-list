@@ -1,1 +1,54 @@
-<p>recipe-edit works!</p>
+<div class="row mt-2">
+    <div class="col-xs-12">
+        <form (ngSubmit)="onSubmit()" [formGroup]="recipeForm">
+            <div class="btn-group form-group">
+                <button type="submit" class="btn btn-success m-1" [disabled]="!recipeForm.valid">Save</button>
+                <button type="button" class="btn btn-danger m-1" (click)="onCancel()">Cancel</button>
+            </div>
+            <div class="form-group">
+                <label for="rname">Name</label>
+                <input type="text" class="form-control" name="name" id="rname" formControlName="recipeName">
+            </div>
+            <div class="form-group">
+                <label for="imgUrl">Image URL</label>
+                <input type="text" class="form-control" name="imgUrl" id="imgUrl" formControlName="recipeImg" #imgUrl>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <img [src]="imgUrl.value" alt="Preview Image">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="textarea">Description</label>
+                <textarea name="
+                " id="textarea" rows="5" class="form-control" formControlName="recipeDesc"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" formArrayName="ingredients">
+                    <div class="row" *ngFor="let ingredient of getControls(); let i = index" [formGroupName]="i">
+                        <div class="col-sm-7 form-group">
+                            <label for="iName">Ingredient Name</label>
+                            <input type="text" class="form-control" name="ingName" id="iName" formControlName="name">
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label for="ingAmount">Ingredient Amount</label>
+                            <input type="number" class="form-control" name="ingAmount" id="" min="0"
+                                formControlName="amount">
+                        </div>
+                        <div class="col-sm-2 form-group mt-4">
+                            <button class="btn btn-danger" (click)="onDeleteIngredient(i)">
+                                X
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-xs-12 mt-2">
+                    <button type="button" class="btn btn-primary" (click)="onAddIngredient();">Add Ingredient</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

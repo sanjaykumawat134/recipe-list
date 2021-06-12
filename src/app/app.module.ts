@@ -11,15 +11,22 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import {RecipeDetailsComponent} from "./recipes/recipe-details/recipe-details.component";
 import {ShopingListService} from "./shopping-list/shopping-list.service";
 import {RecipeStartComponent} from "./recipe-start/recipe-start.component"
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { RecipesService } from './recipes/recipes.service';
+
 @NgModule({
   declarations: [ 
     AppComponent,HeaderComponent,RecipesComponent,RecipesListComponent,RecipeItemComponent,ShoppingListComponent,ShoppingEditComponent,RecipeDetailsComponent, RecipeStartComponent,RecipeStartComponent
+  ,RecipeEditComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
   ],
-  providers: [ShopingListService],
+  providers: [ShopingListService,RecipesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
