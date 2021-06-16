@@ -23,6 +23,13 @@ export class RecipesService{
   getRecipe(index:number):Recipe{
     return this.recipes[index];
   }
+
+  setRecipes(recipes: Recipe[]){
+    // console.log("recipes before is ",this.recipes)
+    this.recipes = recipes;
+    // console.log("recipes is ",this.recipes)
+    this.recipeChanged.next(recipes.slice());
+  }
   constructor(private shopingListService :ShopingListService) { }
 
   addIngredientsToShoppingList(ingredients:Ingredients[]){
