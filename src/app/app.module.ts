@@ -16,11 +16,15 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { RecipesService } from './recipes/recipes.service';
 import { DataStorageService } from './shared/data-storage.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AuthService } from './auth/auth.service';
+import { AuthGaurdService } from './auth/auth-gaurd.service';
 
 @NgModule({
   declarations: [ 
     AppComponent,HeaderComponent,RecipesComponent,RecipesListComponent,RecipeItemComponent,ShoppingListComponent,ShoppingEditComponent,RecipeDetailsComponent, RecipeStartComponent,RecipeStartComponent
-  ,RecipeEditComponent
+  ,RecipeEditComponent, SignupComponent, SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ShopingListService,RecipesService,DataStorageService],
+  providers: [ShopingListService,RecipesService,DataStorageService,AuthService,AuthGaurdService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

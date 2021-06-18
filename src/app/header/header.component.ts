@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Output} from "@angular/core";
+import { AuthService } from "../auth/auth.service";
 import { RecipesService } from "../recipes/recipes.service";
 import { DataStorageService } from "../shared/data-storage.service";
 
@@ -15,7 +16,7 @@ export class HeaderComponent{
   //  onSelect(str:string){
   //   this.featureSelected.emit(str);
   //  }
-  constructor(private storageService : DataStorageService){}
+  constructor(private storageService : DataStorageService,private authService : AuthService){}
  
   onSaveRecipes(){
         this.storageService.storeRecipes().subscribe(
@@ -26,5 +27,13 @@ export class HeaderComponent{
   }
   onGetRecipes(){
     this.storageService.getStoredRecipes();
+  }
+
+  isAuthenticated(){
+   return this.authService.isAuthenticate();
+  }
+
+  onLogout(){
+    this.authService.signout();
   }
 }
