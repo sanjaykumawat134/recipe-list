@@ -1,39 +1,36 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HeaderComponent} from "./header/header.component";
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipesListComponent } from './recipes/recipes-list/recipes-list.component';
-import { RecipeItemComponent } from './recipes/recipes-list/recipe-item/recipe-item.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
-import {RecipeDetailsComponent} from "./recipes/recipe-details/recipe-details.component";
-import {ShopingListService} from "./shopping-list/shopping-list.service";
-import {RecipeStartComponent} from "./recipe-start/recipe-start.component"
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { AuthGaurdService } from './auth/auth-gaurd.service';
+import { AuthModule } from './auth/auth.module';
+import { AuthService } from './auth/auth.service';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { HeaderComponent } from "./header/header.component";
+import { RecipesModule } from './recipes/recipes.module';
 import { RecipesService } from './recipes/recipes.service';
 import { DataStorageService } from './shared/data-storage.service';
-import { HttpClientModule } from '@angular/common/http';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
-import { AuthService } from './auth/auth.service';
-import { AuthGaurdService } from './auth/auth-gaurd.service';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { ShopingListService } from "./shopping-list/shopping-list.service";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [ 
-    AppComponent,HeaderComponent,RecipesComponent,RecipesListComponent,RecipeItemComponent,ShoppingListComponent,ShoppingEditComponent,RecipeDetailsComponent, RecipeStartComponent,RecipeStartComponent
-  ,RecipeEditComponent, SignupComponent, SigninComponent
+  declarations: [
+    AppComponent, HeaderComponent, HomeComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RecipesModule,
+    ShoppingListModule,
+    AuthModule
   ],
-  providers: [ShopingListService,RecipesService,DataStorageService,AuthService,AuthGaurdService],
+  providers: [ShopingListService, RecipesService, DataStorageService, AuthService, AuthGaurdService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
