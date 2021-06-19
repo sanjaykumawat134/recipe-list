@@ -6,25 +6,29 @@ import { RecipeDetailsComponent } from "./recipe-details/recipe-details.componen
 import { RecipeEditComponent } from "./recipe-edit/recipe-edit.component";
 import { RecipesComponent } from "./recipes.component";
 
-const routes : Routes =[
-     {
-    path:'recipes',
-    component:RecipesComponent,
-    children:[
-      {path:'',component:RecipeStartComponent},
-      {path:'new',component:RecipeEditComponent ,canActivate :[AuthGaurdService]},
-      {path:':id',component:RecipeDetailsComponent},
-      {path:':id/edit',component:RecipeEditComponent,canActivate:[AuthGaurdService]}
+const routes: Routes = [
+  {
+    path: '',
+    component: RecipesComponent,
+    children: [
+      { path: '', component: RecipeStartComponent },
+      { path: 'new', component: RecipeEditComponent, canActivate: [AuthGaurdService] },
+      { path: ':id', component: RecipeDetailsComponent },
+      { path: ':id/edit', component: RecipeEditComponent, canActivate: [AuthGaurdService] }
     ]
   },
 ]
 
 @NgModule(
-    {    imports: 
-        [RouterModule.forChild(routes)],
-        exports:[RouterModule]
-    }
-    )
-export class RecipeRoutingModule{
+  {
+    imports:
+      [RouterModule.forChild(routes)],
+    exports: [RouterModule],
+    providers: [
+      AuthGaurdService
+    ]
+  }
+)
+export class RecipeRoutingModule {
 
 }
