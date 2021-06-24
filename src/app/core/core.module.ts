@@ -6,7 +6,6 @@ import { AuthService } from "../auth/auth.service";
 import { RecipesService } from "../recipes/recipes.service";
 import { AuthInterceptor } from "../shared/auth.interceptor";
 import { DataStorageService } from "../shared/data-storage.service";
-import { ShopingListService } from "../shopping-list/shopping-list.service";
 import { HeaderComponent } from "./header/header.component";
 import { HomeComponent } from "./home/home.component";
 
@@ -25,7 +24,7 @@ import { HomeComponent } from "./home/home.component";
             AppRoutingModule
 
         ],
-        providers: [ShopingListService, RecipesService, DataStorageService, AuthService,
+        providers: [RecipesService, DataStorageService, AuthService,
             {
                 provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
             }
